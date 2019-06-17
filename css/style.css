@@ -1,0 +1,23 @@
+/* styles for new note box */
+#new_note {
+    /* max-height: 60px; */
+    color: gray;
+    max-width: 90%;
+}
+
+#new_note p {
+    font-weight: bold;
+}
+
+#new_note i {
+    padding: auto;
+}
+
+#new_note i:hover{
+    color: black;
+    cursor: pointer;
+}
+
+#note {
+    height: 500px;
+}
