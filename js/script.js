@@ -1,18 +1,28 @@
-// expand new note card on click
-$("#new_note p").click(function(){
-    //select new note box
-    var new_note = $("#new_note");
+// load initial contents on document ready
+$(document).ready(function () {
+    //load new note box small
+    $("#new_note").load("html/new-note.html #new_note_small");
 
-    //remove initial contents
-    new_note.children().remove();
-    // new_note.css("max-height","60px");
+    // expand new note card on click
+    $(document).on("click", "#new_note_small > p", function () {
+        $("#new_note").load("html/new-note.html #new_note_expanded");
+        
+    });
 
-    //create new box
-    var contents = `
-        <div class="card-header">Header</div>
-        <div class="card-body">Body</div>
-        <div class="card-footer">Footer</div>
-    `;
-    new_note.html(contents);
-    
-});
+    // set max character limit on text boxes
+    $(document).on("keypress paste", '[contenteditable]', function (e) {
+        if (this.innerHTML.length >= this.getAttribute("max")) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // move focus to note content on enter key press
+    $(document).on("keydown", '#note_title_input', function(e){
+        if(e.keyCode == 13) {
+            e.preventDefault();
+            $("#note_content_input").focus();
+        }
+    })
+
+})

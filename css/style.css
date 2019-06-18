@@ -1,23 +1,111 @@
 /* styles for new note box */
+body {
+    font-family: Roboto;
+}
+
 #new_note {
-    /* max-height: 60px; */
-    color: gray;
-    max-width: 90%;
+    /* background-color: aliceblue; */
+    max-width: 600px;
+    min-width: 245px;
+    border-radius: 10px;
 }
 
-#new_note p {
+#new_note:hover {
+    border-color:turquoise;
+
+}
+
+/* new note small box */
+#new_note_small p {
     font-weight: bold;
+    color: #767976;
+    cursor: text;
+    width: 75%;
+    margin:auto;
 }
 
-#new_note i {
+#new_note_small i {
     padding: auto;
+    color: #202124;
+    opacity: .6;
+    margin: auto auto;
 }
 
-#new_note i:hover{
-    color: black;
+#new_note_small i:hover{
+    opacity: 1;
     cursor: pointer;
 }
 
-#note {
-    height: 500px;
+/* new note box expanded */
+#new_note_expanded  *:focus{
+    outline: none !important;
+}
+
+#new_note_expanded > *  {
+    background-color: inherit;
+    border: 0px;
+}
+
+#new_note_expanded .card-header {
+    padding-right: 2px;
+}
+
+#note_title_input{
+    font-weight:bold;
+    font-size: 120%;
+    width: 80%;
+    display: inline-block !important;
+    margin: auto;
+}
+
+#new_note_expanded .card-header > i {
+    color: #202124;
+    opacity: 0.6;
+    margin: auto;
+    float: right;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+#new_note_expanded i:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* placeholder for contenteditable */
+#new_note_expanded [contenteditable=true]:empty::before{
+    content: attr(data-placeholder);
+    color: #8e928e;
+    font-weight: bold;
+}
+
+#new_note_expanded .note_content {
+    max-height: 500px;
+    overflow: auto;
+    white-space: pre-wrap;
+}
+
+#new_note_expanded .note_content::-webkit-scrollbar-track {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+#new_note_expanded .note_content::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f5f5f5;
+}
+
+#new_note_expanded .note_content::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #fff;
+    background-image: -webkit-gradient(
+    linear,
+    40% 0%,
+    75% 84%,
+    /* from(#7f807e),
+    to(#dcdfdc), */
+    color-stop(0.6, #767976)
+    );
 }

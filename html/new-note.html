@@ -1,0 +1,27 @@
+<!-- new note box small-->
+<div id="new_note_small" class="card-body row py-2">
+    <p class="my-0">Take a note...</p>
+    <i class="material-icons-outlined">check_box</i>
+    <i class="material-icons-outlined">image</i>
+</div>
+
+<!-- new note box expanded -->
+<!-- <div id="new_note_expanded"> -->
+    <form action="" method="POST" id="new_note_expanded">
+        <div class= "card-header py-1">
+            <!-- The following two <div> MUST BE EMPTY to display placeholder -->
+            <div id="note_title_input" contenteditable="true" 
+                max="100" data-placeholder="Title"></div>
+            <input type="hidden" name="note_title">
+            <i class="icon-pushpin" style="margin-top: 5px"></i>
+        </div>
+
+        <div id="note_content_input" class="card-body" contenteditable="true" 
+            max="1000" data-placeholder="Take a note..." autofocus></div>
+        <input type="hidden" name="note_content">
+
+        <div class="note_footer card-footer">
+
+        </div>
+    </form>
+<!-- </div> -->
