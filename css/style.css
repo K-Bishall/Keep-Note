@@ -79,25 +79,25 @@ body {
     font-weight: bold;
 }
 
-#new_note_expanded .note_content {
+#note_content_input {
     max-height: 500px;
     overflow: auto;
     white-space: pre-wrap;
 }
 
-#new_note_expanded .note_content::-webkit-scrollbar-track {
+#note_content_input::-webkit-scrollbar-track {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
     background-color: #f5f5f5;
     border-radius: 10px;
 }
 
-#new_note_expanded .note_content::-webkit-scrollbar {
+#note_content_input::-webkit-scrollbar {
     width: 10px;
     background-color: #f5f5f5;
 }
 
-#new_note_expanded .note_content::-webkit-scrollbar-thumb {
+#note_content_input::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #fff;
     background-image: -webkit-gradient(
@@ -108,4 +108,39 @@ body {
     to(#dcdfdc), */
     color-stop(0.6, #767976)
     );
+}
+
+/* styles for new note extended card footer */
+#new_note_expanded > .card-footer > .icons {
+    display: inline-block;
+    width: 80%;
+    vertical-align: middle;
+}
+
+#new_note_expanded > .card-footer > .icons > i {
+    margin: 0 2% 0 0;
+    vertical-align: middle;
+}
+
+#new_note_expanded > .card-footer > button {
+    border: none;
+    background-color: transparent;
+    float: right;
+    padding: 1% 3%;
+    vertical-align: middle;
+}
+#new_note_expanded > .card-footer > button:hover {
+    background-color: whitesmoke;
+}
+
+/* color circles at the footer */
+.dot {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot:hover, .selected_dot {
+    border: solid 2px black;
 }
