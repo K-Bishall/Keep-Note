@@ -1,6 +1,12 @@
 /* styles for new note box */
 body {
     font-family: Roboto;
+    height: 1000px;
+    overflow: scroll;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 #new_note {
@@ -144,3 +150,71 @@ body {
 .dot:hover, .selected_dot {
     border: solid 2px black;
 }
+
+/* following are the styles for existing notes cards */
+#existing_notes {
+    width: 90%;
+    margin-top: 10%;
+    background-color: transparent;
+}
+
+.saved_note {
+    max-width: 50%;
+    float: left;
+    margin: 0% 1%;
+    border-radius: 10px;
+    border: 1px solid rgba(100,100,100,0.5);
+    min-width: 30%;
+    min-height: 150px;
+    max-height: 300px;
+    margin-bottom: 2%;
+}
+
+.saved_note > * {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    min-width: 20%;
+}
+
+.saved_note .card-header {
+    padding-right: 2px;
+}
+
+.saved_note .note_title {
+    display: inline-block;
+    font-weight:bold;
+    font-size: 120%;
+    color: #202124;
+    max-width: 90%;
+}
+
+.saved_note .card-header > i {
+    color: #202124;
+    opacity: 0.6;
+    margin: auto;
+    float: right;
+    margin-right: 2%;
+    margin-left: 2%;
+    cursor: pointer;
+}
+
+.saved_note .note_content {
+    color: #202124;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.saved_note .card-footer {
+    padding-right: 2%;
+    padding-bottom: 2%;
+    vertical-align: middle;
+}
+.saved_note .card-footer i {
+    float: right;
+    vertical-align: middle;
+    margin-bottom: 2%;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
