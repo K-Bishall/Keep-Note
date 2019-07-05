@@ -23,7 +23,10 @@
             else {
                 $msg = "Something went wrong. Try again later.";
             }
+
+            $stmt -> close();
         }
+        $conn -> close();
     }
     else {
         $msg = "Something went wrong. Try again later.";

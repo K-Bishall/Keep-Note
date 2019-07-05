@@ -1,5 +1,5 @@
 <?php
-// include congig file
+    // include congig file
     require_once "config.php";
 
     // variables
