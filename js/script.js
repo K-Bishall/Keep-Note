@@ -5,4 +5,6 @@ $(document).ready(function () {
 
     // load script for existing notes
     $.getScript('js/notes.js');
+
+    $.getScript('js/update-note.js');
 })

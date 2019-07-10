@@ -11,8 +11,8 @@ function new_note_small() {
 };
 new_note_small();
 
-// expand new note card on click
-$("#new_note").on('click', '#new_note_small > p',function() {
+// new note expanded box
+function new_note_expanded() {
     const new_note_expanded = `
     <!-- new note box expanded -->
     <form id="new_note_expanded">
@@ -55,7 +55,7 @@ $("#new_note").on('click', '#new_note_small > p',function() {
     $("#note_content_input").focus();
 
     // color pickers at footer
-    $(".dot").each(function(index) {
+    $("#new_note .dot").each(function(index) {
         $(this).css("background-color", $(this).attr("value"));
 
         $(this).click(function() {
@@ -88,8 +88,13 @@ $("#new_note").on('click', '#new_note_small > p',function() {
     });
 
     // discard note on delete button click
-    $(".delete").click(new_note_small);
-});
+    $("#new_note .delete").click(new_note_small);
+};
+
+
+// expand new note card on click
+$("#new_note").on('click', '#new_note_small > p',new_note_expanded);
+
 
 
 /* now time to post new note */
@@ -98,13 +103,12 @@ var request;
 
 $("#new_note").on('submit','#new_note_expanded',function(event){
     event.preventDefault();
-
     
     // bind form contents to hidden elements
-    $("input[name='title']").val($("#note_title_input").text());
-    $("input[name='content']").val($("#note_content_input").text());
-    $("input[name='color']").val($(".selected_dot").attr("value"));
-    $("input[name='pinned']").val("false");
+    $("input[name='title']",this).val($("#note_title_input").text());
+    $("input[name='content']",this).val($("#note_content_input").text());
+    $("input[name='color']",this).val($(".selected_dot",this).attr("value"));
+    $("input[name='pinned']",this).val("false");
 
     // abort any pending request
     if(request) {
@@ -120,6 +124,8 @@ $("#new_note").on('submit','#new_note_expanded',function(event){
     // serialize the data
     var serializedData = $form.serialize();
 
+    // console.log(serializedData);
+
     // disable form elements for the duration of ajax request
     // disabled elements do not be serialized so serialize first and disable
     $inputs.prop("disabled", true);
@@ -127,7 +133,7 @@ $("#new_note").on('submit','#new_note_expanded',function(event){
     // fire Ajax request to php/create.php
     request =  $.ajax({
         url: "php/create.php",
-        type: "post",
+        type: "POST",
         data: serializedData
     });
 
@@ -141,7 +147,7 @@ $("#new_note").on('submit','#new_note_expanded',function(event){
 
     // handle failure
     request.fail(function(jqXHR, textStatus, errorThrown) {
-        console.log("Error");
+        console.log("Error - Something wrong");
     });
 
     request.always(function() {

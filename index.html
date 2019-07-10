@@ -24,7 +24,15 @@
         <div id="new_note" class="card container-fluid shadow p-0"></div>
 
         <!-- container for existing notes -->
-        <div id="existing_notes" class="container-fluid"></div>
+        <div id="existing_notes" class="container-fluid" data-toggle="modal" data-target="#update_modal"></div>
+
+        <!-- container for note update modal box -->
+        <div class="modal fade" data-show="true" id="update_modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" id="update_note_box">
+                </div>
+            </div>
+        </div>
     </div>
 
 <!-- jQuery library -->
