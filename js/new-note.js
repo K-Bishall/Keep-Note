@@ -106,7 +106,7 @@ $("#new_note").on('submit','#new_note_expanded',function(event){
     
     // bind form contents to hidden elements
     $("input[name='title']",this).val($("#note_title_input").text());
-    $("input[name='content']",this).val($("#note_content_input").text());
+    $("input[name='content']",this).val($("#note_content_input").html());
     $("input[name='color']",this).val($(".selected_dot",this).attr("value"));
     $("input[name='pinned']",this).val("false");
 
@@ -139,10 +139,12 @@ $("#new_note").on('submit','#new_note_expanded',function(event){
 
     // callback handler on success
     request.done(function(response, textStatus, jqXHR) {
-        console.log(response);
-
         // show small bar again
         new_note_small();
+
+        // add new note to the DOM
+        $(response).hide().prependTo("#existing_notes").fadeIn();
+        // $("#existing_notes").prepend(response).hide().fadeIn();
     });
 
     // handle failure

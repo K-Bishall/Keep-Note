@@ -74,3 +74,12 @@ function update_box() {
     });
 }
 update_box();
+
+// show update box modal on click of note
+$("#existing_notes").on('click','.note_title, .note_content', function() {
+    $("#update_modal").modal("show");
+
+    // select the note
+    $note = $(this).parent();
+    
+});

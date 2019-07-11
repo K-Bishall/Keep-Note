@@ -1,6 +1,6 @@
 // delete note when user clicks on delete button
 
-$(".saved_note").on('click', '.delete', function(event) {
+$("#existing_notes").on('click', '.delete', function(event) {
     // get id of the note
     $id = $(this).parents(".saved_note").attr("id");
 
@@ -16,7 +16,9 @@ $(".saved_note").on('click', '.delete', function(event) {
     $request.done(function(response, textStatus, jqXHR) {
         if(response == 1) {
             // remove note element from DOM
-            $("#"+$id).remove();
+            $("#"+$id).fadeOut(300, function() {
+                $(this).remove();
+            });
         }
     });
 

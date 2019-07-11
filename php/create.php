@@ -18,6 +18,11 @@
         $input_content = trim(isset($_POST['content']) ? $_POST['content'] : '');
         $input_color = trim(isset($_POST['color']) ? $_POST['color'] : $color);
 
+        // stop XSS
+        $input_title = htmlspecialchars($input_title, ENT_QUOTES, 'UTF-8', false);
+        $input_content = htmlspecialchars($input_content, ENT_QUOTES, 'UTF-8', false);
+        $input_color = htmlspecialchars($input_color, ENT_QUOTES, 'UTF-8', false);
+
         // discard if both empty
         if(!empty($input_title) || !empty($input_content)) {
             $title = $input_title;
@@ -26,7 +31,6 @@
         }
         else {
             $error = "Empty Note ! Discarded !!";
-            echo $error;
         }
 
         // check input errors before inserting into database
@@ -46,11 +50,20 @@
 
                 // attempt to execute prepared statement
                 if($stmt -> execute()) {
-                    echo "Success";
-                }
-                else {
-                    $error = "Something went wrong. Note cannot be saved.";
-                    echo $error;
+                    // return newly created object
+                    $id = $stmt -> insert_id;
+                    $sql = "SELECT * FROM notes WHERE id=".$id;
+                    $result = $conn -> query($sql);
+                    $result = $result -> fetch_assoc();
+
+                    echo '<div class="saved_note card" id ="'.$id.'" style="background-color:'.$result['color'].';"
+                    data-lastModified="'.$result['last_modified'].'" data-pinned="'.$result['pinned'].'">
+                        <div class="note_title card-header py-1">'.$result['title'].'</div>
+                        <div class="note_content card-body py-1">'.$result['content'].'</div>
+                        <div class="card-footer py-0">
+                            <i class="material-icons-outlined delete">delete</i>
+                        </div>
+                    </div>';
                 }
 
                 // close statement

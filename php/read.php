@@ -4,7 +4,7 @@
 
     if($_SERVER['REQUEST_METHOD'] == "GET") {
         $sql = "SELECT * FROM notes
-                ORDER BY last_modified ASC
+                ORDER BY last_modified DESC
                 LIMIT 10
                 ";
 
@@ -25,9 +25,7 @@
 
                 echo '<div class="saved_note card" id ="'.$id.'" style="background-color:'.$color.';"
                     data-lastModified="'.$lastModified.'" data-pinned="'.$pinned.'">
-                        <div class="card-header py-1">
-                            <div class="note_title">'.$title.'</div>
-                        </div>
+                        <div class="note_title card-header py-1">'.$title.'</div>
                         <div class="note_content card-body py-1">'.$content.'</div>
                         <div class="card-footer py-0">
                             <i class="material-icons-outlined delete">delete</i>
