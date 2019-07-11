@@ -24,7 +24,7 @@
                 $pinned = $row['pinned'];
 
                 echo '<div class="saved_note card" id ="'.$id.'" style="background-color:'.$color.';"
-                    data-lastModified="'.$lastModified.'" data-pinned="'.$pinned.'">
+                    data-lastModified="'.$lastModified.'" data-pinned="'.$pinned.'" data-color="'.$color.'">
                         <div class="note_title card-header py-1">'.$title.'</div>
                         <div class="note_content card-body py-1">'.$content.'</div>
                         <div class="card-footer py-0">

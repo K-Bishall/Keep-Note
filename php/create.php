@@ -57,7 +57,7 @@
                     $result = $result -> fetch_assoc();
 
                     echo '<div class="saved_note card" id ="'.$id.'" style="background-color:'.$result['color'].';"
-                    data-lastModified="'.$result['last_modified'].'" data-pinned="'.$result['pinned'].'">
+                    data-lastModified="'.$result['last_modified'].'" data-pinned="'.$result['pinned'].'" data-color="'.$result['color'].'">
                         <div class="note_title card-header py-1">'.$result['title'].'</div>
                         <div class="note_content card-body py-1">'.$result['content'].'</div>
                         <div class="card-footer py-0">
