@@ -18,7 +18,7 @@
 
             // attempt to execute
             if($stmt -> execute()) {
-                $msg = "Note Deleted";
+                $msg = 1;
             }
             else {
                 $msg = "Something went wrong. Try again later.";

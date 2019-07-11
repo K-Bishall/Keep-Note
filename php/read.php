@@ -4,7 +4,7 @@
 
     if($_SERVER['REQUEST_METHOD'] == "GET") {
         $sql = "SELECT * FROM notes
-                ORDER BY id DESC
+                ORDER BY last_modified ASC
                 LIMIT 10
                 ";
 
@@ -13,12 +13,31 @@
 
         $result = $stmt -> get_result();
 
-        echo json_encode($result -> fetch_assoc(), JSON_FORCE_OBJECT);
-        echo mysqli_num_rows($result);
+        if($result->num_rows > 0) {
+            $id = $title = $content = $color = $lastModified = $pinned = '';
+            while($row = $result -> fetch_assoc()) {
+                $id = $row['id'];
+                $title = $row['title'];
+                $content = $row['content'];
+                $color = $row['color'];
+                $lastModified = $row['last_modified'];
+                $pinned = $row['pinned'];
+
+                echo '<div class="saved_note card" id ="'.$id.'" style="background-color:'.$color.';"
+                    data-lastModified="'.$lastModified.'" data-pinned="'.$pinned.'">
+                        <div class="card-header py-1">
+                            <div class="note_title">'.$title.'</div>
+                        </div>
+                        <div class="note_content card-body py-1">'.$content.'</div>
+                        <div class="card-footer py-0">
+                            <i class="material-icons-outlined delete">delete</i>
+                        </div>
+                    </div>';
+            }
+        }
 
         $conn -> close();
         
     }
-    exit();
 
 ?>
