@@ -2,7 +2,7 @@
     session_start();
     
     
-    if(!isset($_SESSION['user_id'])) {
+    if(!isset($_SESSION['userid'])) {
         // $_SESSION['url'] = $_SERVER['PHP_SELF']; 
         header("Location: ./login/login.html");
     }

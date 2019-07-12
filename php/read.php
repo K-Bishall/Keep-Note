@@ -1,11 +1,14 @@
 <?php
+    // session_start();
     // include config file
     require_once "config.php";
 
+    $userid = $_SESSION['userid'];
+
     if($_SERVER['REQUEST_METHOD'] == "GET") {
         $sql = "SELECT * FROM notes
+                WHERE userid = $userid
                 ORDER BY last_modified DESC
-                LIMIT 10
                 ";
 
         $stmt = $conn -> prepare($sql);

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     // include congig file
     require_once "config.php";
 
@@ -36,14 +37,15 @@
         // check input errors before inserting into database
         if(empty($error)) {
             // prepare insert statement
-            $sql = "INSERT INTO notes (title, content, color)
-                    VALUES (?,?,?)";
+            $sql = "INSERT INTO notes (userid, title, content, color)
+                    VALUES (?,?,?,?)";
             
             // prepare and bind variables
             if($stmt = $conn -> prepare($sql)) {
-                $stmt -> bind_param("sss",$param_title, $param_content, $param_color);
+                $stmt -> bind_param("isss",$user,$param_title, $param_content, $param_color);
 
                 // set parameters
+                $user = $_SESSION['userid'];
                 $param_title = $title;
                 $param_content = $content;
                 $param_color = $color;

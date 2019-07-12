@@ -12,7 +12,7 @@ if(!empty($_POST)) {
         $user = $result -> fetch_object();
 
         if($_POST['password'] === $user -> password) {
-            $_SESSION['user_id'] = $user -> id;
+            $_SESSION['userid'] = $user -> id;
             $_SESSION['fullname'] = $user -> name;
         }
 
@@ -26,4 +26,5 @@ if(!empty($_POST)) {
     }
 }
 
+$conn -> close();
 ?>

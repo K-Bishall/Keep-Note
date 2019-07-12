@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
     $msg = ""; //msg to return
     // process delete after confirmation

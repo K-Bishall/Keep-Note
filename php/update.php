@@ -1,4 +1,5 @@
 <?php
+session_start();
 // include congig file
 require_once "config.php";
 
