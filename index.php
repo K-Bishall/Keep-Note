@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    
+    
+    if(!isset($_SESSION['user_id'])) {
+        // $_SESSION['url'] = $_SERVER['PHP_SELF']; 
+        header("Location: ./login/login.html");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
