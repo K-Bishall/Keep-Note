@@ -28,6 +28,25 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top py-0">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Keep Note</a>
+
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            <?php echo $_SESSION['fullname']; ?>
+        </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="php/logout.php">Logout</a>
+        </div>
+        </li>
+    </ul>
+    </nav>
+
+
     <div id="note" class="container-fluid">
         <br>
         <!-- containter for new note box -->

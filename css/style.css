@@ -2,12 +2,18 @@
 body {
     font-family: Roboto;
     min-width: 520px;
-    height: 1000px;
+    height: auto;
     overflow: scroll;
+    margin-top: 5%;
 }
 
 body::-webkit-scrollbar {
     display: none;
+}
+
+nav {
+    position: sticky;
+    top: 0;
 }
 
 #note {
